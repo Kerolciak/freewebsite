@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności | TrueMatter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="../logo.png">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --glass-bg: rgba(255,255,255,0.06); --glass-bg-hover: rgba(255,255,255,0.12);
+            --glass-border: rgba(255,255,255,0.12); --glass-border-hover: rgba(255,255,255,0.25);
+            --glass-shadow: 0 8px 32px rgba(0,0,0,0.3); --glass-blur: 20px;
+            --accent-primary: #6C63FF; --accent-secondary: #00D4AA; --accent-tertiary: #FF6B9D;
+            --text-primary: #FFFFFF; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.45);
+            --bg-dark: #0A0A1A; --radius-lg: 28px; --radius-xl: 36px;
+        }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+        .bg-animation { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; overflow:hidden; }
+        .bg-orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.4; animation:orbFloat 20s ease-in-out infinite; }
+        .bg-orb:nth-child(1) { width:600px; height:600px; background:radial-gradient(circle,var(--accent-primary),transparent 70%); top:-10%; left:-10%; animation-duration:25s; }
+        .bg-orb:nth-child(2) { width:500px; height:500px; background:radial-gradient(circle,var(--accent-secondary),transparent 70%); top:40%; right:-15%; animation-duration:30s; animation-delay:-5s; }
+        .bg-orb:nth-child(3) { width:400px; height:400px; background:radial-gradient(circle,var(--accent-tertiary),transparent 70%); bottom:-10%; left:30%; animation-duration:22s; animation-delay:-10s; }
+        @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1);} 25%{transform:translate(100px,-80px) scale(1.1);} 50%{transform:translate(-60px,120px) scale(0.9);} 75%{transform:translate(80px,60px) scale(1.05);} }
+
+        .bg-grid { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:60px 60px; }
+
+        .container { max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+        /* NAV */
+        .navbar { position:fixed; top:0; left:0; right:0; z-index:1000; padding:16px 0; transition:all 0.4s ease; }
+        .navbar.scrolled { padding:10px 0; }
+        .navbar .container { display:flex; align-items:center; justify-content:space-between; }
+        .nav-glass { background:rgba(255,255,255,0.05); backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px); border:1px solid rgba(255,255,255,0.08); border-radius:100px; padding:10px 32px; display:flex; align-items:center; justify-content:space-between; width:100%; box-shadow:0 4px 24px rgba(0,0,0,0.2); }
+        .logo { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text-primary); }
+        .logo-img { width:38px; height:38px; border-radius:10px; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(108,99,255,0.3)); }
+        .logo-text { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; }
+        .logo-text span { background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .nav-back { color:var(--text-secondary); text-decoration:none; font-size:14px; font-weight:500; padding:10px 24px; border-radius:100px; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,0.1); }
+        .nav-back:hover { color:var(--text-primary); background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); }
+
+        /* PAGE CONTENT */
+        .page-hero { padding:160px 0 60px; text-align:center; }
+        .page-hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-1.5px; margin-bottom:16px; }
+        .page-hero .gradient-text { background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary),var(--accent-tertiary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; background-size:200% 200%; animation:gradientShift 5s ease-in-out infinite; }
+        @keyframes gradientShift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+        .page-hero p { font-size:18px; color:var(--text-secondary); max-width:600px; margin:0 auto; }
+        .page-hero .page-meta { font-size:13px; color:var(--text-muted); margin-top:12px; }
+
+        .page-body { padding:0 0 120px; }
+        .content-card { background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur)); border:1px solid var(--glass-border); box-shadow:var(--glass-shadow); border-radius:var(--radius-xl); padding:60px; max-width:900px; margin:0 auto; }
+        .content-card h2 { font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; margin:40px 0 16px; letter-spacing:-0.5px; color:var(--text-primary); }
+        .content-card h2:first-child { margin-top:0; }
+        .content-card h3 { font-size:20px; font-weight:600; margin:28px 0 12px; color:var(--text-primary); }
+        .content-card p { color:var(--text-secondary); font-size:15px; line-height:1.8; margin-bottom:16px; }
+        .content-card ul, .content-card ol { color:var(--text-secondary); font-size:15px; line-height:1.8; margin:0 0 16px 24px; }
+        .content-card li { margin-bottom:8px; }
+        .content-card strong { color:var(--text-primary); }
+        .content-card a { color:var(--accent-primary); text-decoration:none; transition:color 0.3s; }
+        .content-card a:hover { color:var(--accent-secondary); }
+        .content-card .info-box { background:rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.15); border-radius:16px; padding:24px; margin:24px 0; }
+        .content-card .info-box p { margin-bottom:0; }
+
+        /* FOOTER */
+        .footer { padding:60px 0 40px; position:relative; z-index:1; border-top:1px solid rgba(255,255,255,0.06); }
+        .footer-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+        .footer-inner p { font-size:13px; color:var(--text-muted); }
+        .footer-links { display:flex; gap:24px; }
+        .footer-links a { font-size:13px; color:var(--text-muted); text-decoration:none; transition:color 0.3s; }
+        .footer-links a:hover { color:var(--text-primary); }
+
+        .cursor-glow { position:fixed; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(108,99,255,0.08),transparent 70%); pointer-events:none; z-index:0; transform:translate(-50%,-50%); }
+
+        @media (max-width:768px) {
+            .content-card { padding:32px 24px; }
+            .footer-inner { flex-direction:column; text-align:center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"><div class="bg-orb"></div><div class="bg-orb"></div><div class="bg-orb"></div></div>
+    <div class="bg-grid"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-glass">
+                <a href="../index.html" class="logo">
+                    <img src="../logo.png" alt="TrueMatter" class="logo-img">
+                    <div class="logo-text">True<span>Matter</span></div>
+                </a>
+                <a href="../index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Powrót na stronę główną</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1><span class="gradient-text">Polityka Prywatności</span></h1>
+            <p>Dowiedz się, jak zbieramy, przetwarzamy i chronimy Twoje dane osobowe.</p>
+            <p class="page-meta">Ostatnia aktualizacja: 1 stycznia 2025</p>
+        </div>
+    </div>
+
+    <div class="page-body">
+        <div class="container">
+            <div class="content-card">
+                <h2>1. Administrator danych</h2>
+                <p>Administratorem Twoich danych osobowych jest <strong>TrueMatter Sp. z o.o.</strong> z siedzibą w Warszawie, ul. Innowacyjna 42, 00-001 Warszawa, wpisana do rejestru przedsiębiorców KRS pod numerem 0000XXXXXX, NIP: XXXXXXXXXX, REGON: XXXXXXXXX.</p>
+
+                <h2>2. Jakie dane zbieramy</h2>
+                <p>W ramach prowadzenia działalności możemy zbierać następujące dane:</p>
+                <ul>
+                    <li><strong>Dane identyfikacyjne:</strong> imię, nazwisko, nazwa firmy</li>
+                    <li><strong>Dane kontaktowe:</strong> adres email, numer telefonu</li>
+                    <li><strong>Dane techniczne:</strong> adres IP, typ przeglądarki, informacje o urządzeniu</li>
+                    <li><strong>Dane o użytkowaniu:</strong> sposób korzystania ze strony, preferencje</li>
+                </ul>
+
+                <h2>3. Cele przetwarzania</h2>
+                <p>Twoje dane przetwarzamy w następujących celach:</p>
+                <ul>
+                    <li>Realizacja usług i obsługa zamówień</li>
+                    <li>Komunikacja i odpowiadanie na zapytania</li>
+                    <li>Wysyłka newslettera (za Twoją zgodą)</li>
+                    <li>Analityka i ulepszanie naszych usług</li>
+                    <li>Wypełnianie obowiązków prawnych</li>
+                </ul>
+
+                <h2>4. Podstawy prawne przetwarzania</h2>
+                <p>Przetwarzamy Twoje dane na podstawie:</p>
+                <ul>
+                    <li><strong>Art. 6 ust. 1 lit. a RODO</strong> — Twoja zgoda</li>
+                    <li><strong>Art. 6 ust. 1 lit. b RODO</strong> — wykonanie umowy</li>
+                    <li><strong>Art. 6 ust. 1 lit. c RODO</strong> — obowiązek prawny</li>
+                    <li><strong>Art. 6 ust. 1 lit. f RODO</strong> — prawnie uzasadniony interes</li>
+                </ul>
+
+                <h2>5. Okres przechowywania</h2>
+                <p>Dane przechowujemy przez okres niezbędny do realizacji celów, dla których zostały zebrane, nie dłużej niż wymaga tego prawo. Dane przetwarzane na podstawie zgody — do momentu jej wycofania.</p>
+
+                <h2>6. Twoje prawa</h2>
+                <div class="info-box">
+                    <p>Masz prawo do: <strong>dostępu do danych</strong>, <strong>sprostowania</strong>, <strong>usunięcia</strong>, <strong>ograniczenia przetwarzania</strong>, <strong>przenoszenia danych</strong>, <strong>sprzeciwu</strong> oraz <strong>wycofania zgody</strong> w dowolnym momencie. Aby skorzystać z tych praw, skontaktuj się z nami: <a href="mailto:privacy@truematter.pl">privacy@truematter.pl</a></p>
+                </div>
+
+                <h2>7. Bezpieczeństwo danych</h2>
+                <p>Stosujemy odpowiednie środki techniczne i organizacyjne, w tym szyfrowanie SSL/TLS, kontrolę dostępu, regularne audyty bezpieczeństwa oraz hosting danych wyłącznie w Unii Europejskiej.</p>
+
+                <h2>8. Pliki cookies</h2>
+                <p>Nasza strona wykorzystuje pliki cookies. Szczegółowe informacje znajdziesz w naszej <a href="cookies.html">Polityce Cookies</a>.</p>
+
+                <h2>9. Kontakt</h2>
+                <p>W sprawach dotyczących ochrony danych osobowych możesz kontaktować się z naszym Inspektorem Ochrony Danych:</p>
+                <p><strong>Email:</strong> <a href="mailto:privacy@truematter.pl">privacy@truematter.pl</a><br>
+                <strong>Adres:</strong> TrueMatter Sp. z o.o., ul. Innowacyjna 42, 00-001 Warszawa</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p>&copy; 2025 TrueMatter. Wszystkie prawa zastrzeżone.</p>
+                <div class="footer-links">
+                    <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+                    <a href="regulamin.html">Regulamin</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+        document.addEventListener('mousemove', (e) => { const g=document.getElementById('cursorGlow'); g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; });
+    </script>
+</body>
+</html>
